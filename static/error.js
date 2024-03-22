@@ -1,1 +1,20 @@
-function _0x22ab(_0x50eef0,_0x46dc1f){var _0x2d4287=_0x2d42();return _0x22ab=function(_0x22ab06,_0x1a4eb4){_0x22ab06=_0x22ab06-0x185;var _0x53d843=_0x2d4287[_0x22ab06];return _0x53d843;},_0x22ab(_0x50eef0,_0x46dc1f);}var _0x10a525=_0x22ab;function _0x2d42(){var _0x400805=['2264ohEqiq','12786HGAMYP','855972iLycbN','473qxRdTR','20FDPrsx','575534OfRHqD','1361103VQoopn','onload','39165tfIqHl','1841328FFayVM','2140UQlJeE','4965104hWwCvH','3gBaDio'];_0x2d42=function(){return _0x400805;};return _0x2d42();}(function(_0x10f6a5,_0x3b7b52){var _0x3d8ca1=_0x22ab,_0x2c84b6=_0x10f6a5();while(!![]){try{var _0x5722bb=parseInt(_0x3d8ca1(0x189))/0x1+-parseInt(_0x3d8ca1(0x188))/0x2*(-parseInt(_0x3d8ca1(0x18f))/0x3)+parseInt(_0x3d8ca1(0x18e))/0x4+parseInt(_0x3d8ca1(0x18d))/0x5*(-parseInt(_0x3d8ca1(0x191))/0x6)+parseInt(_0x3d8ca1(0x18b))/0x7*(parseInt(_0x3d8ca1(0x190))/0x8)+parseInt(_0x3d8ca1(0x18c))/0x9*(parseInt(_0x3d8ca1(0x187))/0xa)+-parseInt(_0x3d8ca1(0x186))/0xb*(parseInt(_0x3d8ca1(0x185))/0xc);if(_0x5722bb===_0x3b7b52)break;else _0x2c84b6['push'](_0x2c84b6['shift']());}catch(_0x5ac6ee){_0x2c84b6['push'](_0x2c84b6['shift']());}}}(_0x2d42,0xdc8f6),window[_0x10a525(0x18a)]=function(){alert('Hey,\x20do\x20not\x20complain\x20if\x20it\x27s\x20slow.');});
+"use strict";
+const error = document.getElementById("uv-error");
+const errorCode = document.getElementById("uv-error-code");
+const registerButton = document.getElementById("uv-register-sw");
+
+if (location.pathname.startsWith(__uv$config.prefix)) {
+  error.textContent = "Error: The service worker is not registered.";
+  registerButton.classList.add("show");
+}
+
+registerButton.addEventListener("click", async () => {
+  try {
+    await registerSW();
+    location.reload();
+  } catch (err) {
+    error.textContent = "Failed to register service worker.";
+    errorCode.textContent = err.toString();
+    registerButton.classList.remove("show");
+  }
+});
