@@ -1,4 +1,4 @@
-var cacheName = 'JMWCog';
+var cacheName = 'JMW Unblocker';
 var filesToCache = [
   '/js/sw.js'
 ];
